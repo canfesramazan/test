@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Hepsi Burada Automation" thread-count="2" parallel="methods" verbose="2">
+    <test name="Real Device">
+       <classes>
+            <class name="testsTestNG.sigleTests.LoginTestTestNG"></class>
+        </classes>
+    </test>
+    <test name="Emulator">
+        <classes>
+            <class name="testsTestNG.sigleTests.LoginTestTestNG"></class>
+        </classes>
+    </test>
+</suite>
+

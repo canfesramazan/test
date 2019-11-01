@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Hepsi Burada Automation" thread-count="2" parallel="tests" verbose="2">
+
+     <test name="Real Device">
+          <parameter name="runAs" value="grid"></parameter>
+          <parameter name="platform" value="mobile"></parameter>
+          <parameter name="runOn" value="11aaa0100305"></parameter>
+          <classes>
+              <class name="testsTestNG.regresyon.AllTestTestNg"></class>
+          </classes>
+      </test>
+      <test name="Emulator">
+          <parameter name="runAs" value="grid"></parameter>
+          <parameter name="platform" value="mobile"></parameter>
+          <parameter name="runOn" value="emulator-5554"></parameter>
+          <classes>
+              <class name="testsTestNG.regresyon.AllTestTestNg"></class>
+          </classes>
+      </test>
+</suite>
+

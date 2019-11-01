@@ -1,0 +1,266 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x000000010f4a6231, pid=1331, tid=34819
+#
+# JRE version: Java(TM) SE Runtime Environment (10.0.1+10) (build 10.0.1+10)
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (10.0.1+10, mixed mode, tiered, compressed oops, g1 gc, bsd-amd64)
+# Problematic frame:
+# V  [libjvm.dylib+0x6a6231]  ResolvedMethodTable::add_method(Handle)+0x61
+#
+# No core dump will be written. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.java.com/bugreport/crash.jsp
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -agentlib:jdwp=transport=dt_socket,address=127.0.0.1:51519,suspend=y,server=n -ea -Didea.test.cyclic.buffer.size=1048576 -javaagent:/Users/rcanfes/Library/Caches/IdeaIC2018.2/captureAgent/debugger-agent.jar=file:/private/var/folders/_p/h0bhzqcj7_g8yk55gmdsp0ws_t01f3/T/capture.props -Dfile.encoding=UTF-8 com.intellij.rt.execution.junit.JUnitStarter -ideVersion5 -junit4 tests.SearchTest,listingPageChangeSortSettings
+
+Host: MacBookPro14,3 x86_64 2900 MHz, 8 cores, 16G, Darwin 18.6.0
+Time: Wed Jul 17 09:16:11 2019 +03 elapsed time: 127 seconds (0d 0h 2m 7s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007fcd54901000):  JavaThread "pool-1-thread-1" [_thread_in_vm, id=34819, stack(0x000070000cb15000,0x000070000cc15000)]
+
+Stack: [0x000070000cb15000,0x000070000cc15000],  sp=0x000070000cc10da0,  free space=1007k
+Native frames: (J=compiled Java code, A=aot compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.dylib+0x6a6231]  ResolvedMethodTable::add_method(Handle)+0x61
+V  [libjvm.dylib+0x50fb1d]  CallInfo::set_resolved_method_name(Thread*)+0x5d
+V  [libjvm.dylib+0x50fa1e]  CallInfo::CallInfo(Method*, Klass*, Thread*)+0x1d6
+V  [libjvm.dylib+0x3de115]  java_lang_StackFrameInfo::set_method_and_bci(Handle, methodHandle const&, int, Thread*)+0x7f
+V  [libjvm.dylib+0x6db27d]  StackWalk::fill_in_frames(long, BaseFrameStream&, int, int, objArrayHandle, int&, Thread*)+0x369
+V  [libjvm.dylib+0x6dc26d]  StackWalk::fetchNextBatch(Handle, long, long, int, int, objArrayHandle, Thread*)+0xd9
+V  [libjvm.dylib+0x44b99a]  JVM_MoreStackWalk+0x140
+j  java.lang.StackStreamFactory$AbstractStackWalker.fetchStackFrames(JJII[Ljava/lang/Object;)I+0 java.base@10.0.1
+j  java.lang.StackStreamFactory$AbstractStackWalker.fetchStackFrames(I)I+35 java.base@10.0.1
+j  java.lang.StackStreamFactory$AbstractStackWalker.getNextBatch()I+61 java.base@10.0.1
+j  java.lang.StackStreamFactory$AbstractStackWalker.peekFrame()Ljava/lang/Class;+32 java.base@10.0.1
+j  java.lang.StackStreamFactory$AbstractStackWalker.hasNext()Z+1 java.base@10.0.1
+j  java.lang.StackStreamFactory$StackFrameTraverser.tryAdvance(Ljava/util/function/Consumer;)Z+16 java.base@10.0.1
+J 2018 c1 java.util.stream.ReferencePipeline.forEachWithCancel(Ljava/util/Spliterator;Ljava/util/stream/Sink;)Z java.base@10.0.1 (23 bytes) @ 0x000000011d461104 [0x000000011d460fe0+0x0000000000000124]
+J 2004 c1 java.util.stream.AbstractPipeline.copyIntoWithCancel(Ljava/util/stream/Sink;Ljava/util/Spliterator;)Z java.base@10.0.1 (46 bytes) @ 0x000000011d45601c [0x000000011d455d20+0x00000000000002fc]
+J 1839 c1 java.util.stream.AbstractPipeline.copyInto(Ljava/util/stream/Sink;Ljava/util/Spliterator;)V java.base@10.0.1 (54 bytes) @ 0x000000011d3fdeac [0x000000011d3fd9e0+0x00000000000004cc]
+J 1602 c1 java.util.stream.AbstractPipeline.wrapAndCopyInto(Ljava/util/stream/Sink;Ljava/util/Spliterator;)Ljava/util/stream/Sink; java.base@10.0.1 (18 bytes) @ 0x000000011d387134 [0x000000011d387000+0x0000000000000134]
+J 1942 c1 java.util.stream.FindOps$FindOp.evaluateSequential(Ljava/util/stream/PipelineHelper;Ljava/util/Spliterator;)Ljava/lang/Object; java.base@10.0.1 (39 bytes) @ 0x000000011d434f64 [0x000000011d434ca0+0x00000000000002c4]
+J 1865 c1 java.util.stream.AbstractPipeline.evaluate(Ljava/util/stream/TerminalOp;)Ljava/lang/Object; java.base@10.0.1 (94 bytes) @ 0x000000011d405b34 [0x000000011d4056e0+0x0000000000000454]
+J 2019 c1 java.util.stream.ReferencePipeline.findFirst()Ljava/util/Optional; java.base@10.0.1 (12 bytes) @ 0x000000011d4617c4 [0x000000011d4616e0+0x00000000000000e4]
+j  java.util.logging.LogRecord$CallerFinder.lambda$get$1(Ljava/util/stream/Stream;)Ljava/util/Optional;+7 java.logging@10.0.1
+j  java.util.logging.LogRecord$CallerFinder$$Lambda$258.apply(Ljava/lang/Object;)Ljava/lang/Object;+8 java.logging@10.0.1
+j  java.lang.StackStreamFactory$StackFrameTraverser.consumeFrames()Ljava/lang/Object;+25 java.base@10.0.1
+j  java.lang.StackStreamFactory$AbstractStackWalker.doStackWalk(JIIII)Ljava/lang/Object;+78 java.base@10.0.1
+v  ~StubRoutines::call_stub
+V  [libjvm.dylib+0x3d8c3e]  JavaCalls::call_helper(JavaValue*, methodHandle const&, JavaCallArguments*, Thread*)+0x216
+V  [libjvm.dylib+0x6dc085]  StackWalk::fetchFirstBatch(BaseFrameStream&, Handle, long, int, int, int, objArrayHandle, Thread*)+0x437
+V  [libjvm.dylib+0x6dbc2c]  StackWalk::walk(Handle, long, int, int, int, objArrayHandle, Thread*)+0x176
+V  [libjvm.dylib+0x44b840]  JVM_CallStackWalk+0x19e
+j  java.lang.StackStreamFactory$AbstractStackWalker.callStackWalk(JIII[Ljava/lang/Object;)Ljava/lang/Object;+0 java.base@10.0.1
+j  java.lang.StackStreamFactory$AbstractStackWalker.beginStackWalk()Ljava/lang/Object;+31 java.base@10.0.1
+j  java.lang.StackStreamFactory$AbstractStackWalker.walk()Ljava/lang/Object;+8 java.base@10.0.1
+j  java.lang.StackWalker.walk(Ljava/util/function/Function;)Ljava/lang/Object;+10 java.base@10.0.1
+j  java.util.logging.LogRecord$CallerFinder.get()Ljava/util/Optional;+9 java.logging@10.0.1
+j  java.util.logging.LogRecord.inferCaller()V+12 java.logging@10.0.1
+j  java.util.logging.LogRecord.getSourceClassName()Ljava/lang/String;+8 java.logging@10.0.1
+j  java.util.logging.SimpleFormatter.format(Ljava/util/logging/LogRecord;)Ljava/lang/String;+12 java.logging@10.0.1
+j  java.util.logging.StreamHandler.publish(Ljava/util/logging/LogRecord;)V+14 java.logging@10.0.1
+j  java.util.logging.ConsoleHandler.publish(Ljava/util/logging/LogRecord;)V+2 java.logging@10.0.1
+j  java.util.logging.Logger.log(Ljava/util/logging/LogRecord;)V+90 java.logging@10.0.1
+j  java.util.logging.Logger.doLog(Ljava/util/logging/LogRecord;)V+46 java.logging@10.0.1
+j  java.util.logging.Logger.log(Ljava/util/logging/Level;Ljava/lang/String;Ljava/lang/Throwable;)V+29 java.logging@10.0.1
+j  org.openqa.selenium.support.ui.ExpectedConditions.findElement(Lorg/openqa/selenium/By;Lorg/openqa/selenium/WebDriver;)Lorg/openqa/selenium/WebElement;+54
+j  org.openqa.selenium.support.ui.ExpectedConditions.access$000(Lorg/openqa/selenium/By;Lorg/openqa/selenium/WebDriver;)Lorg/openqa/selenium/WebElement;+2
+j  org.openqa.selenium.support.ui.ExpectedConditions$6.apply(Lorg/openqa/selenium/WebDriver;)Lorg/openqa/selenium/WebElement;+5
+j  org.openqa.selenium.support.ui.ExpectedConditions$6.apply(Ljava/lang/Object;)Ljava/lang/Object;+5
+j  org.openqa.selenium.support.ui.FluentWait.until(Ljava/util/function/Function;)Ljava/lang/Object;+22
+j  helper.Utils.findElement(Lorg/openqa/selenium/By;)Lio/appium/java_client/MobileElement;+8
+j  pages.android.AndroidListingPage.getProductNameText()Ljava/lang/String;+23
+j  tests.SearchTest.listingPageChangeSortSettings()V+44
+v  ~StubRoutines::call_stub
+V  [libjvm.dylib+0x3d8c3e]  JavaCalls::call_helper(JavaValue*, methodHandle const&, JavaCallArguments*, Thread*)+0x216
+V  [libjvm.dylib+0x69b6ba]  invoke(InstanceKlass*, methodHandle const&, Handle, bool, objArrayHandle, BasicType, objArrayHandle, bool, Thread*)+0x71d
+V  [libjvm.dylib+0x69af53]  Reflection::invoke_method(oopDesc*, Handle, objArrayHandle, Thread*)+0xf7
+V  [libjvm.dylib+0x4561eb]  JVM_InvokeMethod+0x1b2
+j  jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Ljava/lang/reflect/Method;Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+0 java.base@10.0.1
+j  jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+100 java.base@10.0.1
+j  jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+6 java.base@10.0.1
+j  java.lang.reflect.Method.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+59 java.base@10.0.1
+j  org.junit.runners.model.FrameworkMethod$1.runReflectiveCall()Ljava/lang/Object;+15
+j  org.junit.internal.runners.model.ReflectiveCallable.run()Ljava/lang/Object;+1
+j  org.junit.runners.model.FrameworkMethod.invokeExplosively(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+10
+j  org.junit.internal.runners.statements.InvokeMethod.evaluate()V+12
+j  org.junit.internal.runners.statements.RunBefores.evaluate()V+49
+j  org.junit.internal.runners.statements.RunAfters.evaluate()V+12
+j  org.junit.runners.ParentRunner.runLeaf(Lorg/junit/runners/model/Statement;Lorg/junit/runner/Description;Lorg/junit/runner/notification/RunNotifier;)V+17
+j  org.junit.runners.BlockJUnit4ClassRunner.runChild(Lorg/junit/runners/model/FrameworkMethod;Lorg/junit/runner/notification/RunNotifier;)V+30
+j  org.junit.runners.BlockJUnit4ClassRunner.runChild(Ljava/lang/Object;Lorg/junit/runner/notification/RunNotifier;)V+6
+j  org.junit.runners.ParentRunner$3.run()V+12
+j  org.junit.runners.ParentRunner$1.schedule(Ljava/lang/Runnable;)V+1
+j  org.junit.runners.ParentRunner.runChildren(Lorg/junit/runner/notification/RunNotifier;)V+44
+j  org.junit.runners.ParentRunner.access$000(Lorg/junit/runners/ParentRunner;Lorg/junit/runner/notification/RunNotifier;)V+2
+j  org.junit.runners.ParentRunner$2.evaluate()V+8
+j  org.junit.runners.ParentRunner.run(Lorg/junit/runner/notification/RunNotifier;)V+20
+j  org.junit.runners.Suite.runChild(Lorg/junit/runner/Runner;Lorg/junit/runner/notification/RunNotifier;)V+2
+j  org.junit.runners.Suite.runChild(Ljava/lang/Object;Lorg/junit/runner/notification/RunNotifier;)V+6
+j  org.junit.runners.ParentRunner$3.run()V+12
+j  java.util.concurrent.Executors$RunnableAdapter.call()Ljava/lang/Object;+4 java.base@10.0.1
+j  java.util.concurrent.FutureTask.run$$$capture()V+39 java.base@10.0.1
+j  java.util.concurrent.FutureTask.run()V+5 java.base@10.0.1
+j  java.util.concurrent.ThreadPoolExecutor.runWorker(Ljava/util/concurrent/ThreadPoolExecutor$Worker;)V+92 java.base@10.0.1
+j  java.util.concurrent.ThreadPoolExecutor$Worker.run()V+5 java.base@10.0.1
+j  java.lang.Thread.run()V+11 java.base@10.0.1
+v  ~StubRoutines::call_stub
+V  [libjvm.dylib+0x3d8c3e]  JavaCalls::call_helper(JavaValue*, methodHandle const&, JavaCallArguments*, Thread*)+0x216
+V  [libjvm.dylib+0x3d8252]  JavaCalls::call_virtual(JavaValue*, Klass*, Symbol*, Symbol*, JavaCallArguments*, Thread*)+0x12a
+V  [libjvm.dylib+0x3d8312]  JavaCalls::call_virtual(JavaValue*, Handle, Klass*, Symbol*, Symbol*, Thread*)+0x6a
+V  [libjvm.dylib+0x4540a8]  thread_entry(JavaThread*, Thread*)+0x77
+V  [libjvm.dylib+0x74679c]  JavaThread::thread_main_inner()+0x86
+V  [libjvm.dylib+0x633a5f]  thread_native_entry(Thread*)+0x12b
+C  [libsystem_pthread.dylib+0x32eb]  _pthread_body+0x7e
+C  [libsystem_pthread.dylib+0x6249]  _pthread_start+0x42
+C  [libsystem_pthread.dylib+0x240d]  thread_start+0xd
+C  0x0000000000000000
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+j  java.lang.StackStreamFactory$AbstractStackWalker.fetchStackFrames(JJII[Ljava/lang/Object;)I+0 java.base@10.0.1
+j  java.lang.StackStreamFactory$AbstractStackWalker.fetchStackFrames(I)I+35 java.base@10.0.1
+j  java.lang.StackStreamFactory$AbstractStackWalker.getNextBatch()I+61 java.base@10.0.1
+j  java.lang.StackStreamFactory$AbstractStackWalker.peekFrame()Ljava/lang/Class;+32 java.base@10.0.1
+j  java.lang.StackStreamFactory$AbstractStackWalker.hasNext()Z+1 java.base@10.0.1
+j  java.lang.StackStreamFactory$StackFrameTraverser.tryAdvance(Ljava/util/function/Consumer;)Z+16 java.base@10.0.1
+J 2018 c1 java.util.stream.ReferencePipeline.forEachWithCancel(Ljava/util/Spliterator;Ljava/util/stream/Sink;)Z java.base@10.0.1 (23 bytes) @ 0x000000011d461104 [0x000000011d460fe0+0x0000000000000124]
+J 2004 c1 java.util.stream.AbstractPipeline.copyIntoWithCancel(Ljava/util/stream/Sink;Ljava/util/Spliterator;)Z java.base@10.0.1 (46 bytes) @ 0x000000011d45601c [0x000000011d455d20+0x00000000000002fc]
+J 1839 c1 java.util.stream.AbstractPipeline.copyInto(Ljava/util/stream/Sink;Ljava/util/Spliterator;)V java.base@10.0.1 (54 bytes) @ 0x000000011d3fdeac [0x000000011d3fd9e0+0x00000000000004cc]
+J 1602 c1 java.util.stream.AbstractPipeline.wrapAndCopyInto(Ljava/util/stream/Sink;Ljava/util/Spliterator;)Ljava/util/stream/Sink; java.base@10.0.1 (18 bytes) @ 0x000000011d387134 [0x000000011d387000+0x0000000000000134]
+J 1942 c1 java.util.stream.FindOps$FindOp.evaluateSequential(Ljava/util/stream/PipelineHelper;Ljava/util/Spliterator;)Ljava/lang/Object; java.base@10.0.1 (39 bytes) @ 0x000000011d434f64 [0x000000011d434ca0+0x00000000000002c4]
+J 1865 c1 java.util.stream.AbstractPipeline.evaluate(Ljava/util/stream/TerminalOp;)Ljava/lang/Object; java.base@10.0.1 (94 bytes) @ 0x000000011d405b34 [0x000000011d4056e0+0x0000000000000454]
+J 2019 c1 java.util.stream.ReferencePipeline.findFirst()Ljava/util/Optional; java.base@10.0.1 (12 bytes) @ 0x000000011d4617c4 [0x000000011d4616e0+0x00000000000000e4]
+j  java.util.logging.LogRecord$CallerFinder.lambda$get$1(Ljava/util/stream/Stream;)Ljava/util/Optional;+7 java.logging@10.0.1
+j  java.util.logging.LogRecord$CallerFinder$$Lambda$258.apply(Ljava/lang/Object;)Ljava/lang/Object;+8 java.logging@10.0.1
+j  java.lang.StackStreamFactory$StackFrameTraverser.consumeFrames()Ljava/lang/Object;+25 java.base@10.0.1
+j  java.lang.StackStreamFactory$AbstractStackWalker.doStackWalk(JIIII)Ljava/lang/Object;+78 java.base@10.0.1
+v  ~StubRoutines::call_stub
+j  java.lang.StackStreamFactory$AbstractStackWalker.callStackWalk(JIII[Ljava/lang/Object;)Ljava/lang/Object;+0 java.base@10.0.1
+j  java.lang.StackStreamFactory$AbstractStackWalker.beginStackWalk()Ljava/lang/Object;+31 java.base@10.0.1
+j  java.lang.StackStreamFactory$AbstractStackWalker.walk()Ljava/lang/Object;+8 java.base@10.0.1
+j  java.lang.StackWalker.walk(Ljava/util/function/Function;)Ljava/lang/Object;+10 java.base@10.0.1
+j  java.util.logging.LogRecord$CallerFinder.get()Ljava/util/Optional;+9 java.logging@10.0.1
+j  java.util.logging.LogRecord.inferCaller()V+12 java.logging@10.0.1
+j  java.util.logging.LogRecord.getSourceClassName()Ljava/lang/String;+8 java.logging@10.0.1
+j  java.util.logging.SimpleFormatter.format(Ljava/util/logging/LogRecord;)Ljava/lang/String;+12 java.logging@10.0.1
+j  java.util.logging.StreamHandler.publish(Ljava/util/logging/LogRecord;)V+14 java.logging@10.0.1
+j  java.util.logging.ConsoleHandler.publish(Ljava/util/logging/LogRecord;)V+2 java.logging@10.0.1
+j  java.util.logging.Logger.log(Ljava/util/logging/LogRecord;)V+90 java.logging@10.0.1
+j  java.util.logging.Logger.doLog(Ljava/util/logging/LogRecord;)V+46 java.logging@10.0.1
+j  java.util.logging.Logger.log(Ljava/util/logging/Level;Ljava/lang/String;Ljava/lang/Throwable;)V+29 java.logging@10.0.1
+j  org.openqa.selenium.support.ui.ExpectedConditions.findElement(Lorg/openqa/selenium/By;Lorg/openqa/selenium/WebDriver;)Lorg/openqa/selenium/WebElement;+54
+j  org.openqa.selenium.support.ui.ExpectedConditions.access$000(Lorg/openqa/selenium/By;Lorg/openqa/selenium/WebDriver;)Lorg/openqa/selenium/WebElement;+2
+j  org.openqa.selenium.support.ui.ExpectedConditions$6.apply(Lorg/openqa/selenium/WebDriver;)Lorg/openqa/selenium/WebElement;+5
+j  org.openqa.selenium.support.ui.ExpectedConditions$6.apply(Ljava/lang/Object;)Ljava/lang/Object;+5
+j  org.openqa.selenium.support.ui.FluentWait.until(Ljava/util/function/Function;)Ljava/lang/Object;+22
+j  helper.Utils.findElement(Lorg/openqa/selenium/By;)Lio/appium/java_client/MobileElement;+8
+j  pages.android.AndroidListingPage.getProductNameText()Ljava/lang/String;+23
+j  tests.SearchTest.listingPageChangeSortSettings()V+44
+v  ~StubRoutines::call_stub
+j  jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Ljava/lang/reflect/Method;Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+0 java.base@10.0.1
+j  jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+100 java.base@10.0.1
+j  jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+6 java.base@10.0.1
+j  java.lang.reflect.Method.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+59 java.base@10.0.1
+j  org.junit.runners.model.FrameworkMethod$1.runReflectiveCall()Ljava/lang/Object;+15
+j  org.junit.internal.runners.model.ReflectiveCallable.run()Ljava/lang/Object;+1
+j  org.junit.runners.model.FrameworkMethod.invokeExplosively(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;+10
+j  org.junit.internal.runners.statements.InvokeMethod.evaluate()V+12
+j  org.junit.internal.runners.statements.RunBefores.evaluate()V+49
+j  org.junit.internal.runners.statements.RunAfters.evaluate()V+12
+j  org.junit.runners.ParentRunner.runLeaf(Lorg/junit/runners/model/Statement;Lorg/junit/runner/Description;Lorg/junit/runner/notification/RunNotifier;)V+17
+j  org.junit.runners.BlockJUnit4ClassRunner.runChild(Lorg/junit/runners/model/FrameworkMethod;Lorg/junit/runner/notification/RunNotifier;)V+30
+j  org.junit.runners.BlockJUnit4ClassRunner.runChild(Ljava/lang/Object;Lorg/junit/runner/notification/RunNotifier;)V+6
+j  org.junit.runners.ParentRunner$3.run()V+12
+j  org.junit.runners.ParentRunner$1.schedule(Ljava/lang/Runnable;)V+1
+j  org.junit.runners.ParentRunner.runChildren(Lorg/junit/runner/notification/RunNotifier;)V+44
+j  org.junit.runners.ParentRunner.access$000(Lorg/junit/runners/ParentRunner;Lorg/junit/runner/notification/RunNotifier;)V+2
+j  org.junit.runners.ParentRunner$2.evaluate()V+8
+j  org.junit.runners.ParentRunner.run(Lorg/junit/runner/notification/RunNotifier;)V+20
+j  org.junit.runners.Suite.runChild(Lorg/junit/runner/Runner;Lorg/junit/runner/notification/RunNotifier;)V+2
+j  org.junit.runners.Suite.runChild(Ljava/lang/Object;Lorg/junit/runner/notification/RunNotifier;)V+6
+j  org.junit.runners.ParentRunner$3.run()V+12
+j  java.util.concurrent.Executors$RunnableAdapter.call()Ljava/lang/Object;+4 java.base@10.0.1
+j  java.util.concurrent.FutureTask.run$$$capture()V+39 java.base@10.0.1
+j  java.util.concurrent.FutureTask.run()V+5 java.base@10.0.1
+j  java.util.concurrent.ThreadPoolExecutor.runWorker(Ljava/util/concurrent/ThreadPoolExecutor$Worker;)V+92 java.base@10.0.1
+j  java.util.concurrent.ThreadPoolExecutor$Worker.run()V+5 java.base@10.0.1
+j  java.lang.Thread.run()V+11 java.base@10.0.1
+v  ~StubRoutines::call_stub
+
+siginfo: si_signo: 11 (SIGSEGV), si_code: 1 (SEGV_MAPERR), si_addr: 0x0000000000000008
+
+Register to memory mapping:
+
+RAX=0x0000000000000010 is an unknown value
+RBX=0x0000000000000000 is an unknown value
+RCX=0x000000000000000b is an unknown value
+RDX=0x0000000000000000 is an unknown value
+RSP=0x000070000cc10da0 is pointing into the stack for thread: 0x00007fcd54901000
+RBP=0x000070000cc10dc0 is pointing into the stack for thread: 0x00007fcd54901000
+RSI=0x0000000000000010 is an unknown value
+RDI=0x00000006cf8859c0 is an oop
+java.lang.invoke.ResolvedMethodName 
+{0x00000006cf8859c0} - klass: 'java/lang/invoke/ResolvedMethodName'
+R8 =0x000000013842ad78 is pointing into metadata
+R9 =0x00000001383d9b08 is pointing into metadata
+R10=0x000000010f75d250: AssumeMP+0 in /Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home/lib/server/libjvm.dylib at 0x000000010ee00000
+R11=0x0000000000000000 is an unknown value
+R12=0x00007fcd54901000 is a thread
+R13=0x0000000000000052 is an unknown value
+R14=0x00007fcd52809280 is an unknown value
+R15=0x00007fcd53829730 is an unknown value
+
+
+Registers:
+RAX=0x0000000000000010, RBX=0x0000000000000000, RCX=0x000000000000000b, RDX=0x0000000000000000
+RSP=0x000070000cc10da0, RBP=0x000070000cc10dc0, RSI=0x0000000000000010, RDI=0x00000006cf8859c0
+R8 =0x000000013842ad78, R9 =0x00000001383d9b08, R10=0x000000010f75d250, R11=0x0000000000000000
+R12=0x00007fcd54901000, R13=0x0000000000000052, R14=0x00007fcd52809280, R15=0x00007fcd53829730
+RIP=0x000000010f4a6231, EFLAGS=0x0000000000010206, ERR=0x0000000000000004
+  TRAPNO=0x000000000000000e
+
+Top of Stack: (sp=0x000070000cc10da0)
+0x000070000cc10da0:   00007fcd53829730 000070000cc10dd8
+0x000070000cc10db0:   000070000cc10eb8 00000007c0255f98
+0x000070000cc10dc0:   000070000cc10e10 000000010f30fb1d
+0x000070000cc10dd0:   000070000cc10e10 00000001383dae48
+0x000070000cc10de0:   00007fcd54901000 00000001383dae48
+0x000070000cc10df0:   000070000cc10eb8 00000001383dae48
+0x000070000cc10e00:   0000000000000001 00000007c0255f98
+0x000070000cc10e10:   000070000cc10e90 000000010f30fa1e
+0x000070000cc10e20:   00000007c0255f98 00007fcd54901000
+0x000070000cc10e30:   00007fcd52b16730 000000000f037954
+0x000070000cc10e40:   00000001383dae48 00007fcd54901000
+0x000070000cc10e50:   00000001383dae48 00007fcd54901000
+0x000070000cc10e60:   00000001383dae48 00007fcd53829728
+0x000070000cc10e70:   000070000cc10fb0 00007fcd54901000
+0x000070000cc10e80:   00007fcd54901000 00000006cf885848
+0x000070000cc10e90:   000070000cc10f30 000000010f1de115
+0x000070000cc10ea0:   000000010f5cae9a 0000001700000008
+0x000070000cc10eb0:   00007fcd53829720 00000007c0255f98
+0x000070000cc10ec0:   00000007c0255f98 00000001383dae48
+0x000070000cc10ed0:   00007fcd54901000 00000001383dae48
+0x000070000cc10ee0:   00007fcd54901000 0000005200000001
+0x000070000cc10ef0:   0000000000000000 0000000000000000
+0x000070000cc10f00:   0000000000000000 000070000cc10fb0
+0x000070000cc10f10:   00000001383dae48 000070000cc11d18
+0x000070000cc10f20:   000000010f4db56a 00007fcd54901000
+0x000070000cc10f30:   000070000cc111c0 000000010f4db27d
+0x000070000cc10f40:   0000000000000000 00000000382f76b0
+0x000070000cc10f50:   000070000cc122e0 000070000cc12e00
+0x000070000cc10f60:   0000000000000000 000000021d1a3590
+0x000070000cc10f70:   000000010f73d3d0 000000000cc12f98
+0x000070000cc10f80:   0000000000000000 0000000c1d090710
+0x000070000cc10f90:   00007fcd52b16848 000070000cc111e4 
+
+Instructions: (pc=0x000000010f4a6231)
+0x000000010f4a6211:   79 18 0f b7 70 2e e8 40 72 d1 ff 48 89 c3 31 ff
+0x000000010f4a6221:   4d 85 ff 74 03 49 8b 3f 48 89 de e8 a1 9c d3 ff
+0x000000010f4a6231:   48 8b 43 08 48 8b 40 08 48 8b 40 18 66 81 88 1a
+0x000000010f4a6241:   01 00 00 00 80 31 d2 4d
